@@ -14,7 +14,7 @@ if not os.path.isfile("catchphrase.py"):
 	print "You need a catchphrase database bruh"
 	exit(1)
 
-user_agent = ("rick_and_morty robo 0.1")
+user_agent = ("User-Agent: rickandmortybot 0.1 (by /u/Crispy-snax)")
 r = praw.Reddit(user_agent = user_agent)
 
 r.login(REDDIT_USERNAME, REDDIT_PASS)
@@ -35,15 +35,15 @@ subreddit = r.get_subreddit("pythonforengineers")
 subreddit_comments = subreddit.get_comments()
 for comment in subreddit_comments:
 	if re.search("rickandmortybot.rick",comment.body, re.IGNORECASE) and comment.id not in comments_replied_to:
-		comment.reply("RICK: " + random.choice(RICK_CATCHPHRASES)+ "\n\n*I am maintained by /u/Crispy-snax*")
+		comment.reply("RICK: " + random.choice(RICK_CATCHPHRASES)+ "\n\n*I am a bot maintained by /u/Crispy-snax*")
 		print "Bot replying to : ",comment.body
 		comments_replied_to.append(comment.id)
 	elif re.search("rickandmortybot.morty",comment.body, re.IGNORECASE) and comment.id not in comments_replied_to:
-		comment.reply("MORTY: " + random.choice(MORTY_CATCHPHRASES)+ "\n\n*I am maintained by /u/Crispy-snax*")
+		comment.reply("MORTY: " + random.choice(MORTY_CATCHPHRASES)+ "\n\n*I am a bot maintained by /u/Crispy-snax*")
 		print "Bot replying to : ",comment.body
 		comments_replied_to.append(comment.id)        	
 	elif re.search("rickandmortybot",comment.body, re.IGNORECASE) and comment.id not in comments_replied_to:
-		comment.reply(random.choice(SHOW_CATCHPHRASES) + "\n\n*I am maintained by /u/Crispy-snax*")
+		comment.reply(random.choice(SHOW_CATCHPHRASES) + "\n\n*I am a bot maintained by /u/Crispy-snax*")
 		print "Bot replying to : ",comment.body
 		comments_replied_to.append(comment.id)
 
